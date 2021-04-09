@@ -7,13 +7,8 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
  
   //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
 	
-	private E value;				// Almacena el valor del nodo actual
-	private E currentNode;			// Almacena el el nodo actual
-	private E lastNode;				// Almacena el último nodo
-	private E firstNode; 			// Almacena el primer nodo
-	private E nextNode;  			// Almacena el nodo siguiente al actual
-	private int priorityLevel;		// Almacena el nivel de prioridad 
-	private int size;				// Almacena el tamaño de la cola
+	private Queue<E> newQueue;			// Almacena una nueva cola
+	private int priorityLevel;			// Almacena el nivel de prioridad 
 
   /* OPERACIONES PROPIAS DE ESTA CLASE */
 
@@ -23,9 +18,7 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
   SamePriorityQueue(int p){ 
 	  
 	  priorityLevel = p;
-	  firstNode = null;
-	  lastNode = null;
-	  size = 0;
+	  newQueue = new Queue<E>();
   }
 
   /* Devuelve la prioridad de la cola
@@ -43,12 +36,12 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
    */
   public E getFirst() { 
 	  
-	  try {
+	  if(!isEmpty()) {
 		  
-		  return firstNode;
-	  
-	  } catch (NullPointerException e) {
-		  System.err.println("No se puede mostrar el primer elemento, la cola está vacía. ");
+		  return newQueue.getFirst();	  
+		  
+	  } else {		  
+		  System.out.println("No se puede mostrar el primer elemento, la cola está vacía. ");
 		  return null;
 	  }
   }
@@ -56,16 +49,7 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
   /*Añade un elemento a la cola de acuerdo al orden de llegada*/
   public void enqueue(E elem) { 
 
-	  currentNode = elem;
-	  
-	  if(isEmpty()) {
-		  firstNode = currentNode;
-	  } else {
-		  nextNode = currentNode;
-	  }
-	  
-	  lastNode = currentNode;
-	  size++;
+	  newQueue.enqueue(elem);
   }
 
   /*Elimina un elemento a la cola de acuerdo al orden de llegada
@@ -73,17 +57,12 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
   */
   public void dequeue() { 
 	  
-	  try {
+	  if(!isEmpty()) {
 		  
-		  firstNode = nextNode;
-		  size--;
+		  newQueue.dequeue();
 		  
-		  if(size == 0) {
-			  lastNode = null;
-		  }
-		  
-	  } catch (NullPointerException e) {
-			System.err.println("Error, no se puede extraer el nodo, la cola está vacía.");
+	  } else {
+		  System.out.println("Error, no se puede extraer el nodo, la cola está vacía.");
 	  }
   }
 
@@ -91,30 +70,8 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
 
   /*Devuelve un iterador para la cola*/
   public IteratorIF<E> iterator() {
-	  
-	  IteratorIF<E> queueIterator = new IteratorIF<E>() {
-		
-		  private E currentNode = firstNode;
-		  
-		  public E getNext() {
-			
-			  E elem = currentNode;
-			  currentNode = nextNode;
-			  return elem;
-		  }
-		
-		  public boolean hasNext() {
-
-			  return currentNode != null;
-		  }
-		
-		  public void reset() {
-
-			  currentNode = firstNode;
-		  }
-	  };
-	
-	return queueIterator;
+	  	  
+	  return newQueue.iterator();
   }
  
   /* OPERACIONES PROPIAS DEL INTERFAZ COLLECTIONIF */
@@ -122,36 +79,25 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
   /*Devuelve el número de elementos de la cola*/
   public int size() { 
 	  
-	  return size;
+	  return newQueue.size();
   }
 
   /*Decide si la cola está vacía*/
   public boolean isEmpty() { 
 	  
-	  return size == 0;
+	  return newQueue.isEmpty();
   }
  
   /*Decide si la cola contiene el elemento dado por parámetro*/
   public boolean contains(E e) { 
 
-	  E node = firstNode;
-	  
-	  while(node != null) {
-		  if(node.equals(e)) {
-			  return true;
-		  }
-		  node = nextNode;
-	  }
-	  
-	  return false;
+	  return newQueue.contains(e);	  
   }
  
   /*Elimina todos los elementos de la cola*/
   public void clear() { 
 	  
-	  size = 0;
-	  firstNode = null;
-	  lastNode = null;
+	  newQueue.clear();	  
   }
  
   /* OPERACIONES PROPIAS DEL INTERFAZ COMPARABLE */
