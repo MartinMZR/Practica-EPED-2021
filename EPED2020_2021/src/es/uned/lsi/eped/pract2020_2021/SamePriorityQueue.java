@@ -1,19 +1,19 @@
 package es.uned.lsi.eped.pract2020_2021;
 
-import es.uned.lsi.eped.DataStructures.QueueIF;
-import es.uned.lsi.eped.DataStructures.IteratorIF;
+import es.uned.lsi.eped.DataStructures.*;
 
 /*Representa una cola con un nivel de prioridad asignado determinado*/
 public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQueue<E>>{
  
   //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
 	
-	private E currentNode;					// Almacena el valor del nodo actual
-	private E lastNode;						// Almacena el último nodo
-	private E firstNode; 					// Almacena el primer nodo
-	private E nextNode;  					// Almacena el nodo siguiente al actual
-	private int priorityLevel;				// Almacena el nivel de prioridad 
-	private int size;						// Almacena el tamaño de la cola
+	private E value;				// Almacena el valor del nodo actual
+	private E currentNode;			// Almacena el el nodo actual
+	private E lastNode;				// Almacena el último nodo
+	private E firstNode; 			// Almacena el primer nodo
+	private E nextNode;  			// Almacena el nodo siguiente al actual
+	private int priorityLevel;		// Almacena el nivel de prioridad 
+	private int size;				// Almacena el tamaño de la cola
 
   /* OPERACIONES PROPIAS DE ESTA CLASE */
 
@@ -92,7 +92,29 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
   /*Devuelve un iterador para la cola*/
   public IteratorIF<E> iterator() {
 	  
-	  
+	  IteratorIF<E> queueIterator = new IteratorIF<E>() {
+		
+		  private E currentNode = firstNode;
+		  
+		  public E getNext() {
+			
+			  E elem = currentNode;
+			  currentNode = nextNode;
+			  return elem;
+		  }
+		
+		  public boolean hasNext() {
+
+			  return currentNode != null;
+		  }
+		
+		  public void reset() {
+
+			  currentNode = firstNode;
+		  }
+	  };
+	
+	return queueIterator;
   }
  
   /* OPERACIONES PROPIAS DEL INTERFAZ COLLECTIONIF */
