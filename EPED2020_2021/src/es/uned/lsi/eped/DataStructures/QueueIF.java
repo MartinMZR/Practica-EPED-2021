@@ -12,12 +12,12 @@ public interface QueueIF<E> extends SequenceIF<E> {
      public E getFirst ();
 
     /* Incluye un elemento al final de la cola. Modifica el     *
-     * tamaÃ±o de la misma.                                      *
-     * @param elem el elemento que debe encolar (aÃ±adir).       */
+     * tamaño de la misma.                                      *
+     * @param elem el elemento que debe encolar (añadir).       */
      public void enqueue (E elem);
     
     /* Elimina el primer elemento de la cola. Modifica la       *
-     * tamaÃ±o de la misma.                                      *
+     * tamaño de la misma.                                      *
      * @Pre !isEmpty();                                         */
      public void dequeue ();        
 }

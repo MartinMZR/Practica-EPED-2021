@@ -12,11 +12,11 @@ public interface StackIF <E> extends SequenceIF<E>{
 	public E getTop ();
 	
 	/* Incluye un elemento en la cima de la pila. Modifica el   *
-	 * tamaÃ±o de la misma.                                      *
-	 * @param elem el elemento que se quiere aÃ±adir en la cima  */
+	 * tamaño de la misma.                                      *
+	 * @param elem el elemento que se quiere añadir en la cima  */
 	public void push (E elem);    
 	
-	/* Elimina la cima de la pila. Modifica el tamaÃ±o de la     * 
+	/* Elimina la cima de la pila. Modifica el tamaño de la     * 
 	 * pila.                                                    *
 	 * @Pre !isEmpty ();                                        */
 	public void pop ();            

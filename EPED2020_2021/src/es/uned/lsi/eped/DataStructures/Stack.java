@@ -18,7 +18,7 @@ public class Stack<E> extends Sequence<E> implements StackIF<E> {
 		return this.firstNode.getValue();
 	}
 
-	/* AÃ±ade un nuevo elemento a la cima de la pila */
+	/* Añade un nuevo elemento a la cima de la pila */
 	public void push(E elem) {
 		NodeSequence newNode = new NodeSequence(elem);
 		if(!isEmpty()){

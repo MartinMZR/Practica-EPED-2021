@@ -21,8 +21,8 @@ public interface ListIF<E> extends SequenceIF<E> {
 	public void set (int pos, E e);
 	
    	/* Inserta un elemento en la Lista.                         *
-   	 * @param elem El elemento que hay que aÃ±adir.              *				
-   	 * @param pos  La posición en la que se debe aÃ±adir elem,   *
+   	 * @param elem El elemento que hay que añadir.              *				
+   	 * @param pos  La posición en la que se debe añadir elem,   *
    	 *  comenzando en 1.                                        *
  	 * @Pre: 1 <= pos <= size()+1                               */
     public void insert (int pos, E elem);

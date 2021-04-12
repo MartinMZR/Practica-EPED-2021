@@ -15,16 +15,16 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
     //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
 
     /*Constructor por defecto*/
-    protected PriorityQueueIterator(){ … }
+    protected PriorityQueueIterator(){ ... }
 
     /*Devuelve el siguiente elemento de la iteración*/
-    public E getNext() { … }
+    public E getNext() { ... }
     
     /*Comprueba si queda algún elemento por iterar*/
-    public boolean hasNext() { … }
+    public boolean hasNext() { ... }
  
     /*Reinicia el iterador a la posición inicial*/
-    public void reset() { … }
+    public void reset() { ... }
   }
 
 
@@ -33,7 +33,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 
   /*constructor por defecto: crea cola con prioridad vacía
    */
-  BSTPriorityQueue(){ … }
+  BSTPriorityQueue(){ ... }
 
   /* OPERACIONES PROPIAS DE LA INTERFAZ PRIORITYQUEUEIF */
 
@@ -41,37 +41,37 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
    *llegó en primer lugar
    * @Pre !isEmpty()
    */
-  public E getFirst() { … }
+  public E getFirst() { ... }
  
   /*Añade un elemento a la cola de acuerdo a su prioridad
    *y su orden de llegada
    */
-  public void enqueue(E elem, int prior) { … }
+  public void enqueue(E elem, int prior) { ... }
 
-  /*Elimina el elemento más prioritario y que llegó a la cola
+  /*Elimina el elemento más prioritario y que llegá a la cola
    *en primer lugar
    * @Pre !isEmpty()
    */
-  public void dequeue() { … }
+  public void dequeue() { ... }
 
   /* OPERACIONES PROPIAS DE LA INTERFAZ SEQUENCEIF */
 
   /*Devuelve un iterador para la cola*/
-  public IteratorIF<E> iterator() { … }
+  public IteratorIF<E> iterator() { ... }
  
   /* OPERACIONES PROPIAS DE LA INTERFAZ COLLECTIONIF */
 
   /*Devuelve el número de elementos de la cola*/
-  public int size() { … }
+  public int size() { ... }
 
   /*Decide si la cola está vacía*/
-  public boolean isEmpty() { … }
+  public boolean isEmpty() { ... }
  
-  /*Decide si la cola contiene el elemento dado por parámetro*/
-  public boolean contains(E e) { … }
+  /*Decide si la cola contiene el elemento dado por parï¿½metro*/
+  public boolean contains(E e) { ... }
  
   /*Elimina todos los elementos de la cola*/
-  public void clear() { … }
+  public void clear() { ... }
  
 }
 

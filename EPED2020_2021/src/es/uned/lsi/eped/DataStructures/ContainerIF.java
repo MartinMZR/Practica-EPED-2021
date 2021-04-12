@@ -4,7 +4,7 @@ package es.uned.lsi.eped.DataStructures;
  * que no guardan ningún orden entre sí.                        */
 public interface ContainerIF<E> extends CollectionIF<E> {
 
-	/* AÃ±ade un elemento al contenedor                          */
+	/* Añade un elemento al contenedor                          */
 	public void add (E e);
 	
 	/* Elimina un elemento e del contenedor                     *

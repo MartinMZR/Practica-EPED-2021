@@ -15,7 +15,7 @@ public interface BSTreeIF<E extends Comparable<E>> extends TreeIF<E> {
 		ASCENDING, DESCENDING
 	}
 
-	/* AÃ±ade un elemento no contenido previamente en el árbol   *
+	/* Añade un elemento no contenido previamente en el árbol   *
 	 * @Pre: !contains(e)                                       *
 	 * @Post: contains(e)                                       */
 	public void add(E e);

@@ -28,7 +28,7 @@ public class Queue<E> extends Sequence<E> implements QueueIF<E> {
 		return this.firstNode.getValue();
 	}
 
-	/* AÃ±ade un nuevo elemento al final de la cola */
+	/* Añade un nuevo elemento al final de la cola */
 	public void enqueue(E elem) {
 		NodeSequence newNode = new NodeSequence(elem);
 		if(isEmpty()){

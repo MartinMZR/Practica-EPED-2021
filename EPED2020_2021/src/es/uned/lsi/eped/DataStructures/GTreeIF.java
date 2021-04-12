@@ -29,7 +29,7 @@ public interface GTreeIF<E> extends TreeIF<E> {
     /* Inserta un árbol como hijo en la posición pos.           *
      * @param pos la posición que ocupará el árbol entre sus    *
      * hermanos, comenzando en 1.                               *
-     * Si pos == getChildren ().size () + 1, se aÃ±ade como      *
+     * Si pos == getChildren ().size () + 1, se añade como      *
      * último hijo.                                             *
      * @param e el hijo que se desea insertar.                  *
      * @Pre 1<= pos <= getChildren ().size () + 1               */

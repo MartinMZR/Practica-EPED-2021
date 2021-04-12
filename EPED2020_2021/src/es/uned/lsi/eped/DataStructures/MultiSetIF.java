@@ -5,7 +5,7 @@ package es.uned.lsi.eped.DataStructures;
  * instancias dentro del multiconjunto.                         */
 public interface MultiSetIF<E> extends ContainerIF<E> {
 
-	/* AÃ±ade varias instancias de un elemento al multiconjunto  *
+	/* Añade varias instancias de un elemento al multiconjunto  *
 	 * @pre:  n > 0 && premult = multiplicity(e)                *
 	 * @post: multiplicity(e) = premult + n                     */
 	public void addMultiple (E e, int n);

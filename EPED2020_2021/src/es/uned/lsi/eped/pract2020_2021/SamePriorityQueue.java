@@ -7,7 +7,7 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
  
   //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
 	
-	private Queue<E> newQueue;			// Almacena una nueva cola
+	private Queue<E> normalQueue;		// Almacena una nueva cola
 	private int priorityLevel;			// Almacena el nivel de prioridad 
 
   /* OPERACIONES PROPIAS DE ESTA CLASE */
@@ -18,7 +18,7 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
   SamePriorityQueue(int p){ 
 	  
 	  priorityLevel = p;
-	  newQueue = new Queue<E>();
+	  normalQueue = new Queue<E>();
   }
 
   /* Devuelve la prioridad de la cola
@@ -38,7 +38,7 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
 	  
 	  if(!isEmpty()) {
 		  
-		  return newQueue.getFirst();	  
+		  return normalQueue.getFirst();	  
 		  
 	  } else {		  
 		  System.out.println("No se puede mostrar el primer elemento, la cola está vacía. ");
@@ -47,9 +47,9 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
   }
  
   /*Añade un elemento a la cola de acuerdo al orden de llegada*/
-  public void enqueue(E elem) { 
-
-	  newQueue.enqueue(elem);
+  public void enqueue(E elem) {
+	  
+	  normalQueue.enqueue(elem);
   }
 
   /*Elimina un elemento a la cola de acuerdo al orden de llegada
@@ -58,11 +58,9 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
   public void dequeue() { 
 	  
 	  if(!isEmpty()) {
-		  
-		  newQueue.dequeue();
-		  
+		  normalQueue.dequeue();
 	  } else {
-		  System.out.println("Error, no se puede extraer el nodo, la cola está vacía.");
+		  System.out.println("No se puede extraer el nodo, la cola está vacía.");
 	  }
   }
 
@@ -70,34 +68,34 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
 
   /*Devuelve un iterador para la cola*/
   public IteratorIF<E> iterator() {
-	  	  
-	  return newQueue.iterator();
+
+	  return normalQueue.iterator();
   }
  
   /* OPERACIONES PROPIAS DEL INTERFAZ COLLECTIONIF */
 
   /*Devuelve el número de elementos de la cola*/
-  public int size() { 
-	  
-	  return newQueue.size();
+  public int size() {
+
+	  return normalQueue.size();
   }
 
   /*Decide si la cola está vacía*/
-  public boolean isEmpty() { 
-	  
-	  return newQueue.isEmpty();
+  public boolean isEmpty() {
+
+	  return normalQueue.isEmpty();
   }
  
   /*Decide si la cola contiene el elemento dado por parámetro*/
-  public boolean contains(E e) { 
+  public boolean contains(E e) {
 
-	  return newQueue.contains(e);	  
+	  return normalQueue.contains(e);	  
   }
  
   /*Elimina todos los elementos de la cola*/
-  public void clear() { 
-	  
-	  newQueue.clear();	  
+  public void clear() {
+
+	  normalQueue.clear();	  
   }
  
   /* OPERACIONES PROPIAS DEL INTERFAZ COMPARABLE */
@@ -108,7 +106,7 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
    *  - Valor 0 si ambas colas tienen la misma prioridad
    *  - Valor <0 si la cola tiene menor prioridad que la cola dada por parámetro
    */
-  public int compareTo(SamePriorityQueue<E> o) { 
+  public int compareTo(SamePriorityQueue<E> o) {
 	  
 	  int result;
 	  
