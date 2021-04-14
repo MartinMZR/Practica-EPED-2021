@@ -78,9 +78,8 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
    */
   public E getFirst() { 
 
-	  if(!isEmpty()) {			  
-		  int size = priorityQueue.size();			// El tamaño de la cola nos da la de mayor prioridad
-		  return priorityQueue.get(size).getFirst();
+	  if(!isEmpty()) {		  
+		  return priorityQueue.get(0).getFirst();
 	  } else {
 		  System.out.println("La cola está vacía");
 		  return null;
@@ -92,31 +91,40 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
    */
   public void enqueue(E elem, int prior) { 
 	  
-	  SamePriorityQueue<E> newSPQueue = new  SamePriorityQueue<E>(prior);			// Creamos una nueva cola
-
-	  if(isEmpty()) {		  
-		  newSPQueue.enqueue(elem);					// Insertamos el elemento en la cola
-		  priorityQueue.insert(prior, newSPQueue);	// Insertamos la cola en el listado de colas
-	  } else {
-
-		  boolean existPriority = false;
+	  boolean insertQueueFinal = true;
+	  
+	  // Comprobamos si existe alguna cola con la prioridad entrante
+	  for(int e = 0; e < priorityQueue.size(); e++) {
 		  
-		  // Recorremos la lista
-		  for(int counter = 0; counter <= priorityQueue.size(); counter++) {
-			  
-			  SamePriorityQueue<E> actualQueue = priorityQueue.get(counter);	// Cogemos la cola actual
-			  int priority = actualQueue.compareTo(newSPQueue);					// Comparamos la prioridad
-			  
-			  if(priority == 0) {					
-				  existPriority = true;
-				  actualQueue.enqueue(elem);		// Si encontramos una cola añadimos el elemento
-			  }			  		  
+		  int p = priorityQueue.get(e).getPriority();
+		  // Si existe ponemos el elemento en la cola
+		  if(p == prior) {
+			  priorityQueue.get(e).enqueue(elem);
+			  insertQueueFinal = false;
+			  break;
 		  }
-		  
-		  if(!existPriority) {						// No existe la cola			  
-			  priorityQueue.insert(prior, newSPQueue);
+		  // Si encontramos una cola con una prioridad menor
+		  if(p < prior) {
+			  //Hay que crear una nueva cola
+			  SamePriorityQueue<E> newQueue = new SamePriorityQueue<>(prior);
+			  //Hay que insertar el elemento
+			  newQueue.enqueue(elem);
+			  // Hay que insertar la cola en el lugar indicado
+			  priorityQueue.insert(e, newQueue);
+			  insertQueueFinal = false;
+			  break;
 		  }		  
-	  }  
+	  }		
+	  
+	  // Si no existe -> Por que hemos llegado al final de la cola
+	  if(insertQueueFinal) {			  	  
+		  //Hay que crear una nueva cola
+		  SamePriorityQueue<E> newQueue = new SamePriorityQueue<>(prior);
+		  //Hay que insertar el elemento
+		  newQueue.enqueue(elem);
+		  // Hay que insertar el elemento al final de la cola	
+		  priorityQueue.insert(priorityQueue.size(), newQueue);  
+	  }	  		
   }
 
   /*Elimina el elemento más prioritario y que llegá a la cola
@@ -126,8 +134,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
   public void dequeue() { 
 	  	  
 	  if(!isEmpty()) {			  
-		  int size = priorityQueue.size();			// El tamaño de la cola nos da la de mayor prioridad
-		  priorityQueue.get(size).dequeue();
+		  priorityQueue.get(0).dequeue();
 	  } else {
 		  System.out.println("La cola está vacía");
 	  }	  
@@ -156,23 +163,30 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
   /*Decide si la cola contiene el elemento dado por parámetro*/
   public boolean contains(E e) {
 	  
+	E elem = null; 
+	int size = 0;
+	  
 	List<SamePriorityQueue<E>> containsQueues = priorityQueue; 
 	SamePriorityQueue<E> actualQueue;
 	  
   	while(containsQueues.size() != 0) {					// Si existen colas
   		
-  		int size = containsQueues.size();
+  		size = containsQueues.size();
   		actualQueue = containsQueues.get(size);
-  		E elem = actualQueue.getFirst();				// Cogemos el elemento más prioritario
-	    
-  		if(elem.equals(e)) {
-    		return true;
-    	}
-  		
-  		if(elem != null) { actualQueue.dequeue(); }		// Todavía hay elementos en la misma cola
-  		else { containsQueues.remove(size); }			// Borramos la cola actual
-
-  	}
+  		elem = actualQueue.getFirst();					// Cogemos el elemento más prioritario
+	     
+  		// Todavía hay elementos en la misma cola
+  		if(elem != null) { 
+  			actualQueue.dequeue();
+  		// No quedan elemento en la cola, borramos la cola	
+  		} else { 
+  			containsQueues.remove(size);
+  		}				
+  		// Comparamos el elemento 
+  		if(elem.equals(e)) { 
+  			return true; 
+  		}
+  	}  	
   	return false;
   }
  
