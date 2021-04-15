@@ -32,13 +32,11 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 	    	if(iteratorQueue.get(size).getFirst() != null) {	// Todavía hay elementos en la misma cola
 	    	
 	    		elem = iteratorQueue.get(size).getFirst();
-	    		iteratorQueue.get(size).dequeue();	
-	    	
+	    		iteratorQueue.get(size).dequeue();		    	
 	    	} else {											// Borramos la cola vacía
 	    		
 	    		iteratorQueue.remove(size);
-	    		getNext();	 
-	    		
+	    		getNext();	    		
 	    	}
 	    	
 	    	return elem;
@@ -162,32 +160,16 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
  
   /*Decide si la cola contiene el elemento dado por parámetro*/
   public boolean contains(E e) {
+
+	  IteratorIF<SamePriorityQueue<E>> it = priorityQueue.iterator();
 	  
-	E elem = null; 
-	int size = 0;
-	  
-	List<SamePriorityQueue<E>> containsQueues = priorityQueue; 
-	SamePriorityQueue<E> actualQueue;
-	  
-  	while(containsQueues.size() != 0) {					// Si existen colas
-  		
-  		size = containsQueues.size();
-  		actualQueue = containsQueues.get(size);
-  		elem = actualQueue.getFirst();					// Cogemos el elemento más prioritario
-	     
-  		// Todavía hay elementos en la misma cola
-  		if(elem != null) { 
-  			actualQueue.dequeue();
-  		// No quedan elemento en la cola, borramos la cola	
-  		} else { 
-  			containsQueues.remove(size);
-  		}				
-  		// Comparamos el elemento 
-  		if(elem.equals(e)) { 
-  			return true; 
-  		}
-  	}  	
-  	return false;
+	  while(it.hasNext()) {	
+
+		  if(it.getNext().contains(e)) {
+			  return true;
+		  }
+	  }
+	  return false;
   }
  
   /*Elimina todos los elementos de la cola*/
