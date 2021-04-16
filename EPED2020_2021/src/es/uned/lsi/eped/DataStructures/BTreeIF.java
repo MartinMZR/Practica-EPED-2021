@@ -5,44 +5,44 @@ package es.uned.lsi.eped.DataStructures;
  * los nodos).                                                  */
 public interface BTreeIF<E> extends TreeIF<E>{
 	/* Valor enumerado que indica los tipos de recorrido        *
-	 * ofrecidos por los ·rboles de binarios.                   */
+	 * ofrecidos por los √°rboles de binarios.                   */
 	public enum IteratorModes {
 		PREORDER, POSTORDER, BREADTH, INORDER, RLBREADTH
 	}
     
-	/* Obtiene el hijo izquierdo del ·rbol llamante.            *
-     * @return el hijo izquierdo del ·rbol llamante.            */
+	/* Obtiene el hijo izquierdo del √°rbol llamante.            *
+     * @return el hijo izquierdo del √°rbol llamante.            */
     public BTreeIF<E> getLeftChild ();
     
-    /* Obtiene el hijo derecho del ·rbol llamante.              *
-     * @return el hijo derecho del ·rbol llamante               */
+    /* Obtiene el hijo derecho del √°rbol llamante.              *
+     * @return el hijo derecho del √°rbol llamante               */
     public BTreeIF<E> getRightChild ();
 
-    /* Modifica la raÌz del ·rbol.                              *
-     * @param el elemento que se quiere poner como raÌz del     *
-     * ·rbol.                                                   */ 	
+    /* Modifica la ra√≠z del √°rbol.                              *
+     * @param el elemento que se quiere poner como ra√≠z del     *
+     * √°rbol.                                                   */ 	
     public void setRoot (E e);
     
-    /* Pone el ·rbol par·metro como hijo izquierdo del ·rbol    *
-     * llamante. Si ya habÌa hijo izquierdo, el antiguo dejar·  *
+    /* Pone el √°rbol par√°metro como hijo izquierdo del √°rbol    *
+     * llamante. Si ya hab√≠a hijo izquierdo, el antiguo dejar√°  *
      * de ser accesible (se pierde).                            *
      * @Pre: !isEmpty()                                         *
-     * @param child el ·rbol que se debe poner como hijo        *
+     * @param child el √°rbol que se debe poner como hijo        *
      *        izquierdo.                                        */
     public void setLeftChild (BTreeIF <E> child);
     
-    /* Pone el ·rbol par·metro como hijo derecho del ·rbol      *
-     * llamante. Si ya habÌa hijo izquierdo, el antiguo dejar·  *
+    /* Pone el √°rbol par√°metro como hijo derecho del √°rbol      *
+     * llamante. Si ya hab√≠a hijo izquierdo, el antiguo dejar√°  *
      * de ser accesible (se pierde).                            *
      * @Pre: !isEmpty()                                         *
-     * @param child el ·rbol que se debe poner como hijo        *
+     * @param child el √°rbol que se debe poner como hijo        *
      *        derecho.	                                        */
     public void setRightChild (BTreeIF <E> child);
 
-    /* Elimina el hijo izquierdo del ·rbol.                     */
+    /* Elimina el hijo izquierdo del √°rbol.                     */
     public void removeLeftChild ();
     
-    /* Elimina el hijo derecho del ·rbol.                       */
+    /* Elimina el hijo derecho del √°rbol.                       */
     public void removeRightChild ();
     
 }

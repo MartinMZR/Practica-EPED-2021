@@ -9,24 +9,24 @@ public abstract class Tree<E> extends Collection<E> implements TreeIF<E> {
 		this.root = null;
 	}
 	
-	/* Devuelve el elemento situado en la raíz del árbol */
+	/* Devuelve el elemento situado en la raÃ­z del Ã¡rbol */
 	public E getRoot() {
 		return this.root;
 	}
 
-	/* Decide si el árbol es una hoja */
+	/* Decide si el Ã¡rbol es una hoja */
 	public boolean isLeaf() {
 		return this.root!=null && getNumChildren() == 0;
 	}
 
-	/* Reimplementación de algunos métodos de Collection */
+	/* ReimplementaciÃ³n de algunos mÃ©todos de Collection */
 	
-	/* Decide si el árbol es vacío */
+	/* Decide si el Ã¡rbol es vacÃ­o */
 	public boolean isEmpty() {
 		return this.root==null;
 	}
 	
-	/* Vacía el árbol */
+	/* VacÃ­a el Ã¡rbol */
 	public void clear() {
 		super.clear();
 		this.root = null;

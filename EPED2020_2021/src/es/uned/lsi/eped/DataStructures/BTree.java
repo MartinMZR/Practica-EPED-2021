@@ -5,24 +5,24 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 	private BTreeIF<E> leftChild;
 	private BTreeIF<E> rightChild;
 		
-	/* Constructor por defecto: crea un árbol binario vacío */
+	/* Constructor por defecto: crea un Ã¡rbol binario vacÃ­o */
 	public BTree(){
 		super();
 		this.leftChild = null;
 		this.rightChild = null;
 	}
 		
-	/* Devuelve el hijo izquierdo del árbol */
+	/* Devuelve el hijo izquierdo del Ã¡rbol */
 	public BTreeIF<E> getLeftChild() {
 		return this.leftChild;
 	}
 
-	/* Devuelve el hijo derecho del árbol */
+	/* Devuelve el hijo derecho del Ã¡rbol */
 	public BTreeIF<E> getRightChild() {
 		return this.rightChild;
 	}
 
-	/* Modifica la raíz */
+	/* Modifica la raÃ­z */
 	public void setRoot(E e) {
 		this.root = e;
 	}
@@ -47,9 +47,9 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		this.rightChild = null;
 	}
 
-	/* Reimplementación/Especialización de algunos métodos de Collection */
+	/* ReimplementaciÃ³n/EspecializaciÃ³n de algunos mÃ©todos de Collection */
 	
-	/* Devuelve el número de nodos del árbol */
+	/* Devuelve el nÃºmero de nodos del Ã¡rbol */
 	public int size() {
 		if ( isEmpty() ) { return 0; }
 		int s = 1;
@@ -58,25 +58,25 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		return s;
 	}
 
-	/* Vacía el árbol binario */
+	/* VacÃ­a el Ã¡rbol binario */
 	public void clear() {
 		super.clear();
 		this.leftChild = null;
 		this.rightChild = null;
 	}
 	
-	/* Métodos heredados de CollectionIF */
+	/* MÃ©todos heredados de CollectionIF */
 	
-	/* Comprueba si el árbol binario contiene el elemento */
+	/* Comprueba si el Ã¡rbol binario contiene el elemento */
 	public boolean contains(E e) {
 		return ( !isEmpty() && ( this.root.equals(e) ||   
 								 ( this.leftChild != null && this.leftChild.contains(e) ) ||
 								 ( this.rightChild != null && this.rightChild.contains(e) ) ) );
 	}
 
-	/* Métodos heredados de TreeIF */
+	/* MÃ©todos heredados de TreeIF */
 	
-	/* Devuelve el número de hijos del árbol */
+	/* Devuelve el nÃºmero de hijos del Ã¡rbol */
 	public int getNumChildren() {
 		int nC = 0;
 		if ( this.leftChild != null ) { nC++; }
@@ -84,7 +84,7 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		return nC;
 	}
 
-	/* Devuelve el fan-out del árbol */
+	/* Devuelve el fan-out del Ã¡rbol */
 	public int getFanOut() {
 		if ( getNumChildren() == 2 ) { return 2; }
 		if ( this.leftChild != null ) { return Math.max(1,this.leftChild.getFanOut()); }
@@ -92,7 +92,7 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		return 0;
 	}
 
-	/* Devuelve la altura del árbol */
+	/* Devuelve la altura del Ã¡rbol */
 	public int getHeight() {
 		if ( isEmpty() ) { return -1; }
 		int hLC = -1;
@@ -102,7 +102,7 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		return 1 + ((hLC > hRC)?hLC:hRC);
 	}
 
-	/* Devuelve un iterador sobre el árbol según el recorrido elegido */
+	/* Devuelve un iterador sobre el Ã¡rbol segÃºn el recorrido elegido */
 	public IteratorIF<E> iterator(Object mode) {
 		QueueIF<E> queue = new Queue<E>();
 		if ( mode instanceof BTreeIF.IteratorModes ) {
@@ -127,7 +127,7 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		return queue.iterator();
 	}
 	
-	/* Recorre el árbol en preorden */
+	/* Recorre el Ã¡rbol en preorden */
 	private void preorder(BTreeIF<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			q.enqueue(t.getRoot());
@@ -136,7 +136,7 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		}
 	}
 	
-	/* Recorre el árbol en inorden */
+	/* Recorre el Ã¡rbol en inorden */
 	private void inorder(BTreeIF<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			if ( t.getLeftChild() != null ) { inorder(t.getLeftChild(),q); }
@@ -145,7 +145,7 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		}
 	}
 
-	/* Recorre el árbol en postorden */
+	/* Recorre el Ã¡rbol en postorden */
 	private void postorder(BTreeIF<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			if ( t.getLeftChild() != null ) { postorder(t.getLeftChild(),q); }
@@ -154,7 +154,7 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		}
 	}
 
-	/* Recorre el árbol en anchura de izquierda a derecha */
+	/* Recorre el Ã¡rbol en anchura de izquierda a derecha */
 	private void breadthLR(BTreeIF<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			QueueIF<BTreeIF<E>> auxQ = new Queue<BTreeIF<E>>();
@@ -169,7 +169,7 @@ public class BTree<E> extends Tree<E> implements BTreeIF<E> {
 		}
 	}
 
-	/* Recorre el árbol en anchura de derecha a izquierda */
+	/* Recorre el Ã¡rbol en anchura de derecha a izquierda */
 	private void breadthRL(BTreeIF<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			QueueIF<BTreeIF<E>> auxQ = new Queue<BTreeIF<E>>();

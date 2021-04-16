@@ -148,7 +148,7 @@ public class Test {
 		Link: https://es.wikipedia.org/wiki/Recorrido_de_%C3%A1rboles
 		*/
 		//
-		System.out.println("Test de operaciones sobre árboles binarios");
+		System.out.println("Test de operaciones sobre Ã¡rboles binarios");
 		BTree<String> btree = new BTree<String>();
 		btree.setRoot("F");
 		//construcciï¿½n hijo izquierdo
@@ -219,7 +219,7 @@ public class Test {
 		System.out.println();
 		
 		/*Test operaciones sobre ï¿½rboles generales*/
-		System.out.println("Test de operaciones sobre árboles generales");
+		System.out.println("Test de operaciones sobre Ã¡rboles generales");
 		GTreeIF<Integer> gtree = new GTree<Integer>();
 		gtree.setRoot(1);
 		//hijo 1

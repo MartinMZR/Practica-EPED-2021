@@ -7,56 +7,52 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
  
   //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
 	private List<SamePriorityQueue<E>> priorityQueue;
-	private final int firstElement = 1; 
+	private int firstElement; 
 	
   /* Clase privada que implementa un iterador para la *
    * cola con prioridad basada en secuencia.          */
   public class PriorityQueueIterator implements IteratorIF<E> {
 
     //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE	  
-	  private List<SamePriorityQueue<E>> iteratorList;
+	  private List<SamePriorityQueue<E>> listOfSPQ;
 	  private SamePriorityQueue<E> spQueue;
 	  private IteratorIF<E> iteratorQueue;
 	  private E elem;
 	  
     /*Constructor por defecto*/
     protected PriorityQueueIterator(){ 
-    	iteratorList = new List<SamePriorityQueue<E>>(priorityQueue);
-    	spQueue = iteratorList.get(firstElement);
+    	listOfSPQ = new List<SamePriorityQueue<E>>(priorityQueue);
+    	spQueue = listOfSPQ.get(firstElement);
     	iteratorQueue = spQueue.iterator();
     	elem = null;
     }
 
     /*Devuelve el siguiente elemento de la iteración*/
-    public E getNext() {  		    
-    	// Comprueba que aún quedan colas en la lista y que la cola actual está vacía
-	   	if(hasNext() && !iteratorQueue.hasNext()) { 	    																						
-	   		iteratorList.remove(firstElement);
-	   		// Comprueba que una vez eliminada la cola actual aún quedan una cola por recorrer
-	   		if(hasNext()) {
-	   			spQueue = iteratorList.get(firstElement);
-	   			iteratorQueue = spQueue.iterator();
-	   		}
-    	}    	
-	   	// Comprueba que aún quedan elementos en la cola actual
-	   	if(iteratorQueue.hasNext()) {	    		
-	   		elem = iteratorQueue.getNext();	
-	   		//return elem;
-	   	} else {
-	   		//return null;
-	   	}
+    public E getNext() {  		
+	   	    	
+	   	elem = iteratorQueue.getNext(); 
+	   
+	   	// Comprobamos si cola actual está vacía
+	   	if(!iteratorQueue.hasNext()) {	
+	   		listOfSPQ.remove(firstElement); 
+	   		// Comprobamos que aún queda una cola por recorrer
+		   	if(hasNext()) {
+			   	spQueue = listOfSPQ.get(firstElement);
+			   	iteratorQueue = spQueue.iterator();
+			 }
+	   	}  	
 	   	
 	   	return elem;
     }
     
     /*Comprueba si queda algún elemento por iterar*/
     public boolean hasNext() { 
-    	return iteratorList.size() != 1;
+    	return listOfSPQ.size() != 0;
     }
  
     /*Reinicia el iterador a la posición inicial*/
     public void reset() { 
-    	iteratorList = new List<SamePriorityQueue<E>>(priorityQueue);
+    	listOfSPQ = new List<SamePriorityQueue<E>>(priorityQueue);
     }
   }
 
@@ -67,7 +63,8 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
   /*constructor por defecto: crea cola con prioridad vacía
    */
   BucketQueue() { 
-	  priorityQueue = new List<SamePriorityQueue<E>>();	  
+	  priorityQueue = new List<SamePriorityQueue<E>>();
+	  firstElement = 1;
   }
 
   /* OPERACIONES PROPIAS DE LA INTERFAZ PRIORITYQUEUEIF */
@@ -90,8 +87,8 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
    */
   public void enqueue(E elem, int prior) { 
 
-	  boolean insertQueueFinal = true;
-	  
+	  boolean insertQueueToFinal = true;
+	  	  
 	  // Comprobamos si existe alguna cola con la prioridad entrante
 	  for(int getListNumber = 1; getListNumber <= priorityQueue.size(); getListNumber++) {
 		  		  	  
@@ -99,24 +96,24 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 		  // Si existe ponemos el elemento en la cola
 		  if(p == prior) {
 			  priorityQueue.get(getListNumber).enqueue(elem);
-			  insertQueueFinal = false;
+			  insertQueueToFinal = false;
 			  break;
 		  }
 		  // Si encontramos una cola con una prioridad menor
-		  if(prior > p) {  
+		  if(p < prior) {  
 			  //Hay que crear una nueva cola
 			  SamePriorityQueue<E> newQueue = new SamePriorityQueue<>(prior);
 			  //Hay que insertar el elemento
 			  newQueue.enqueue(elem);
 			  // Hay que insertar la cola en el lugar indicado
 			  priorityQueue.insert(getListNumber, newQueue);
-			  insertQueueFinal = false;
+			  insertQueueToFinal = false;
 			  break;
 		  }		  
 	  }		
 	  
 	  // Si no existe -> Por que hemos llegado al final de la cola
-	  if(insertQueueFinal) {			  
+	  if(insertQueueToFinal) {			  
 		  //Hay que crear una nueva cola
 		  SamePriorityQueue<E> newQueue = new SamePriorityQueue<>(prior);
 		  //Hay que insertar el elemento
@@ -159,6 +156,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 	  while(it.hasNext()) {		 
 		  sizeQueue = sizeQueue + it.getNext().size();  
 	  }	 
+	  
 	  return sizeQueue;
   }
 

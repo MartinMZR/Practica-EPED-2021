@@ -1,6 +1,6 @@
 package es.uned.lsi.eped.DataStructures;
 
-//import es.uned.lsi.eped.DataStructures.BSTreeIF.IteratorModes;
+import es.uned.lsi.eped.DataStructures.BSTreeIF.IteratorModes;
 
 public class BSTree<E extends Comparable<E>> extends Tree<E> implements BSTreeIF<E> {
 
@@ -32,7 +32,7 @@ public class BSTree<E extends Comparable<E>> extends Tree<E> implements BSTreeIF
 		return this.rightChild;
 	}
 
-	/* Modifica la raíz */
+	/* Modifica la raÃ­z */
 	private void setRoot(E e) {
 		this.root = e;
 	}
@@ -121,7 +121,7 @@ public class BSTree<E extends Comparable<E>> extends Tree<E> implements BSTreeIF
 						this.setLeftChild(this.getRightChild().getLeftChild());
 						this.setRightChild(this.getRightChild().getRightChild());
 					}
-					if(this.getRightChild()==null)
+					else if(this.getRightChild()==null)
 					{
 						this.setRoot(this.getLeftChild().getRoot());						
 						this.setRightChild(this.getLeftChild().getRightChild());
@@ -142,7 +142,7 @@ public class BSTree<E extends Comparable<E>> extends Tree<E> implements BSTreeIF
 						{
 							parent.setLeftChild(child.getRightChild());
 						}
-						if(child.getRightChild()==null)
+						else if(child.getRightChild()==null)
 						{
 							parent.setLeftChild(child.getLeftChild());
 						}
@@ -157,7 +157,7 @@ public class BSTree<E extends Comparable<E>> extends Tree<E> implements BSTreeIF
 						{
 							parent.setRightChild(child.getRightChild());
 						}
-						if(child.getRightChild()==null)
+						else if(child.getRightChild()==null)
 						{
 							parent.setRightChild(child.getLeftChild());
 						}
@@ -212,7 +212,7 @@ public class BSTree<E extends Comparable<E>> extends Tree<E> implements BSTreeIF
 		return 0;
 	}
 
-	/* Devuelve la altura del árbol */
+	/* Devuelve la altura del Ã¡rbol */
 	public int getHeight() {
 		if ( isEmpty() ) { return -1; }
 		int hLC = -1;
@@ -256,7 +256,7 @@ public class BSTree<E extends Comparable<E>> extends Tree<E> implements BSTreeIF
 		return null;
 	}
 	
-	/* Recorre el árbol en inorden */
+	/* Recorre el Ã¡rbol en inorden */
 	private void inorder(BSTree<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			if ( t.getLeftChild() != null ) { inorder(t.getLeftChild(),q); }
@@ -265,7 +265,7 @@ public class BSTree<E extends Comparable<E>> extends Tree<E> implements BSTreeIF
 		}
 	}
 	
-	/* Recorre el árbol en inorden */
+	/* Recorre el Ã¡rbol en inorden */
 	private void inorder(BSTree<E> t, StackIF<E> stack) {
 		if ( !t.isEmpty() ) {
 			if ( t.getLeftChild() != null ) { inorder(t.getLeftChild(),stack); }

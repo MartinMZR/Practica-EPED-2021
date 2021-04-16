@@ -1,26 +1,26 @@
 package es.uned.lsi.eped.DataStructures;
 
-/* Representa un árbol de búsqueda binaria, en el que los       *
- * elementos se organizan automáticamente según su orden.       */
+/* Representa un Ã¡rbol de bÃºsqueda binaria, en el que los       *
+ * elementos se organizan automÃ¡ticamente segÃºn su orden.       */
 public interface BSTreeIF<E extends Comparable<E>> extends TreeIF<E> {
 	/* Valor enumerado que indica los tipos de recorrido        *
-	 * ofrecidos por los árboles de búsqueda binaria.           */
+	 * ofrecidos por los Ã¡rboles de bÃºsqueda binaria.           */
 	public enum IteratorModes {
 		DIRECTORDER, REVERSEORDER
 	}
 	
-	/* Valor enumerado que indica cuál es la ordenación de los  *
-	 * elementos dentro del árbol (ascendente o descendente).   */
+	/* Valor enumerado que indica cuÃ¡l es la ordenaciÃ³n de los  *
+	 * elementos dentro del Ã¡rbol (ascendente o descendente).   */
 	public enum Order {
 		ASCENDING, DESCENDING
 	}
 
-	/* Añade un elemento no contenido previamente en el árbol   *
+	/* AÃ±ade un elemento no contenido previamente en el Ã¡rbol   *
 	 * @Pre: !contains(e)                                       *
 	 * @Post: contains(e)                                       */
 	public void add(E e);
 	
-	/* Elimina un elemento previamente contenido en el árbol    *
+	/* Elimina un elemento previamente contenido en el Ã¡rbol    *
 	 * @Pre: contains(e)                                        *
 	 * @Post: !contains(e)                                      */
 	public void remove(E e);

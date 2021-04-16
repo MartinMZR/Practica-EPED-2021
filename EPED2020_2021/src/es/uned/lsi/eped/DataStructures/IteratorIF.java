@@ -3,16 +3,16 @@ package es.uned.lsi.eped.DataStructures;
 /* Representa un iterador de elementos.                         */
 public interface IteratorIF<E> {
 
-	/* Obtiene el siguiente elemento de la iteración.           *
+	/* Obtiene el siguiente elemento de la iteraciÃ³n.           *
      * @pre:  hasNext ()                                        *
-     * @return el siguiente elemento de la iteración,           */
+     * @return el siguiente elemento de la iteraciÃ³n,           */
 	  public E getNext ();
 	    
-	 /* Comprueba si aún quedan elementos por iterar.           *
-	  * @return true sii el iterador dispone de más elementos.  */
+	 /* Comprueba si aÃºn quedan elementos por iterar.           *
+	  * @return true sii el iterador dispone de mÃ¡s elementos.  */
 	  public boolean hasNext ();
 	    
-	 /* Vuelve la posición del iterador al principio. Esto      *
+	 /* Vuelve la posiciÃ³n del iterador al principio. Esto      *
 	  * permite reutilizar un iterador sin crear otro nuevo.    */
 	  public void reset ();
 }

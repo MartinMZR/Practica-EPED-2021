@@ -4,7 +4,7 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 
 	private ListIF<GTreeIF<E>> children; 
 	
-	/* Constructor por defecto: crea un árbol vacío */
+	/* Constructor por defecto: crea un Ã¡rbol vacÃ­o */
 	public GTree() {
 		super();
 		this.children = new List<GTreeIF<E>>();
@@ -30,9 +30,9 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 		this.children.remove(pos);
 	}
 
-	/* Reimplementación/Especialización de algunos métodos de Collection */
+	/* ReimplementaciÃ³n/EspecializaciÃ³n de algunos mÃ©todos de Collection */
 	
-	/* Devuelve el número de nodos del árbol */
+	/* Devuelve el nÃºmero de nodos del Ã¡rbol */
 	public int size() {
 		if ( isEmpty() ) { return 0; }
 		int s = 1;
@@ -43,15 +43,15 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 		return s;
 	}
 
-	/* Vacía el árbol */
+	/* VacÃ­a el Ã¡rbol */
 	public void clear() {
 		super.clear();
 		this.children.clear();
 	}
 
-	/* Métodos heredados de CollectionIF */
+	/* MÃ©todos heredados de CollectionIF */
 	
-	/* Comprueba si el árbol contiene el elemento */
+	/* Comprueba si el Ã¡rbol contiene el elemento */
 	public boolean contains(E e) {
 		if ( isEmpty() ) { return false; }
 		boolean found = getRoot().equals(e);
@@ -62,14 +62,14 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 		return found;
 	}	
 
-	/* Métodos heredados de TreeIF */
+	/* MÃ©todos heredados de TreeIF */
 	
-	/* Devuelve el número de hijos del árbol */
+	/* Devuelve el nÃºmero de hijos del Ã¡rbol */
 	public int getNumChildren() {
 		return this.children.size();
 	}
 
-	/* Devuelve el fan-out del árbol */
+	/* Devuelve el fan-out del Ã¡rbol */
 	public int getFanOut() {
 		if ( isEmpty() ) { return 0; }
 		int fOut = getNumChildren();
@@ -81,7 +81,7 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 		return fOut;
 	}
 
-	/* Devuelve la altura del árbol */
+	/* Devuelve la altura del Ã¡rbol */
 	public int getHeight() {
 		int height = -1;
 		if ( isEmpty() ) { return height; }
@@ -93,7 +93,7 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 		return 1 + height;
 	}
 
-	/* Devuelve un iterador sobre el árbol según el recorrido elegido */
+	/* Devuelve un iterador sobre el Ã¡rbol segÃºn el recorrido elegido */
 	public IteratorIF<E> iterator(Object mode) {
 		QueueIF<E> queue = new Queue<E>();
 		if ( mode instanceof GTree.IteratorModes ) {
@@ -112,7 +112,7 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 		return queue.iterator();
 	}
 	
-	/* Recorre el árbol en preorden */
+	/* Recorre el Ã¡rbol en preorden */
 	private void preorder(GTreeIF<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			q.enqueue(t.getRoot());
@@ -123,7 +123,7 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 		}
 	}
 
-	/* Recorre el árbol en postorden */
+	/* Recorre el Ã¡rbol en postorden */
 	private void postorder(GTreeIF<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			IteratorIF<GTreeIF<E>> childIt = t.getChildren().iterator();
@@ -134,7 +134,7 @@ public class GTree<E> extends Tree<E> implements GTreeIF<E> {
 		}
 	}
 
-	/* Recorre el árbol en anchura de izquierda a derecha */
+	/* Recorre el Ã¡rbol en anchura de izquierda a derecha */
 	private void breadthLR(GTreeIF<E> t, QueueIF<E> q) {
 		if ( !t.isEmpty() ) {
 			QueueIF<GTreeIF<E>> auxQ = new Queue<GTreeIF<E>>();

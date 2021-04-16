@@ -1,10 +1,10 @@
 package es.uned.lsi.eped.DataStructures;
 
-/* Representa un contenedor, que es una colección de elementos  *
- * que no guardan ningún orden entre sí.                        */
+/* Representa un contenedor, que es una colecciÃ³n de elementos  *
+ * que no guardan ningÃºn orden entre sÃ­.                        */
 public interface ContainerIF<E> extends CollectionIF<E> {
 
-	/* Añade un elemento al contenedor                          */
+	/* AÃ±ade un elemento al contenedor                          */
 	public void add (E e);
 	
 	/* Elimina un elemento e del contenedor                     *
