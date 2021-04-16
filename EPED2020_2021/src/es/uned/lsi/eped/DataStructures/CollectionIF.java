@@ -1,20 +1,20 @@
 package es.uned.lsi.eped.DataStructures;
 
-/* Representa una colección de elementos, sin ningún tipo de    *
- *  relación entre ellos más que la pertenencia a la misma      *  
- *  colección.                                                  */
+/* Representa una colecciÃ³n de elementos, sin ningÃºn tipo de    *
+ *  relaciÃ³n entre ellos mÃ¡s que la pertenencia a la misma      *  
+ *  colecciÃ³n.                                                  */
 public interface CollectionIF<E> {
 
-	/* Devuelve el número de elementos de la colección.         */
+	/* Devuelve el nÃºmero de elementos de la colecciÃ³n.         */
 	public int size ();
 	
-	/* Devuelve true sii la colección no contiene elementos.    */	
+	/* Devuelve true sii la colecciÃ³n no contiene elementos.    */	
 	public boolean isEmpty ();
 	
-	/* Devuelve true sii e está en la colección.                */
+	/* Devuelve true sii e estÃ¡ en la colecciÃ³n.                */
 	public boolean contains (E e);
 	
-	/* Elimina todos los elementos de la colección.             */
+	/* Elimina todos los elementos de la colecciÃ³n.             */
 	public void clear ();
 	
 }

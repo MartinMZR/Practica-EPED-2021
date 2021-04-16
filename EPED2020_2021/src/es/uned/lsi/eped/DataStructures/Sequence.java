@@ -67,10 +67,10 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
 		return this.firstNode;
 	}
 
-	/* Constructor de una secuencia vac韆 */
+	/* Constructor de una secuencia vac铆a */
 	public Sequence () {
-		super();               /* Creamos una colecci髇 */         
-		this.firstNode = null; /* La secuencia es vac韆 */
+		super();               /* Creamos una colecci贸n */         
+		this.firstNode = null; /* La secuencia es vac铆a */
 	}
 	
 	/* Constructor por copia */
@@ -90,15 +90,15 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
 		}
 	}
 
-	/* Reimplementaci髇/Especializaci髇 de algunos m閠odos de Collection */
+	/* Reimplementaci贸n/Especializaci贸n de algunos m茅todos de Collection */
 
 	/* Elimina todos los elementos de la secuencia */
 	public void clear () {
-		super.clear();    /* Vaciamos la colecci髇 */
-		this.firstNode = null; /* La secuencia es vac韆 */
+		super.clear();    /* Vaciamos la colecci贸n */
+		this.firstNode = null; /* La secuencia es vac铆a */
 	}
 
-	/* M閠odos heredados de CollectionIF */
+	/* M茅todos heredados de CollectionIF */
 
 	/* Comprueba si la secuencia contiene el elemento */
 	public boolean contains(E e) {
@@ -118,7 +118,7 @@ public abstract class Sequence<E> extends Collection<E> implements SequenceIF<E>
     	return new SequenceIterator();
     }
     
-	/* Devuelve el nodo i-閟imo de la secuencia        *
+	/* Devuelve el nodo i-茅simo de la secuencia        *
 	 * @Pre: 1 <= i <= size()                          */
 	protected NodeSequence getNode(int i){
 		NodeSequence node = this.firstNode;

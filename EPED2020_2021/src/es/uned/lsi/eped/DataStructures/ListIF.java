@@ -5,30 +5,30 @@ package es.uned.lsi.eped.DataStructures;
  * sus elementos de forma no destructiva.                       */ 
 public interface ListIF<E> extends SequenceIF<E> {
 
-	/* Devuelve el elemento de la lista que ocupa la posici髇   *
-	 * indicada por el par醡etro.                               *	
-	 * @param pos la posici髇 comenzando en 1.                  *	
+	/* Devuelve el elemento de la lista que ocupa la posici贸n   *
+	 * indicada por el par谩metro.                               *	
+	 * @param pos la posici贸n comenzando en 1.                  *	
 	 * @Pre: 1 <= pos <= size().                                *
-	 * @return el elemento en la posici髇 pos.                  */
+	 * @return el elemento en la posici贸n pos.                  */
 	public E get (int pos);
     
-	/* Modifica la posici髇 dada por el par醡etro pos para que  *
-	 * contenga el valor dado por el par醡etro e.               *
-	 * @param pos la posici髇 cuyo valor se debe modificar,     *
+	/* Modifica la posici贸n dada por el par谩metro pos para que  *
+	 * contenga el valor dado por el par谩metro e.               *
+	 * @param pos la posici贸n cuyo valor se debe modificar,     *
 	 *  comenzando en 1.                                        *
-	 * @param e el valor que debe adoptar la posici髇 pos.      *
+	 * @param e el valor que debe adoptar la posici贸n pos.      *
 	 * @Pre: 1 <= pos <= size().                                */
 	public void set (int pos, E e);
 	
    	/* Inserta un elemento en la Lista.                         *
-   	 * @param elem El elemento que hay que a馻dir.              *				
-   	 * @param pos  La posici髇 en la que se debe a馻dir elem,   *
+   	 * @param elem El elemento que hay que a帽adir.              *				
+   	 * @param pos  La posici贸n en la que se debe a帽adir elem,   *
    	 *  comenzando en 1.                                        *
  	 * @Pre: 1 <= pos <= size()+1                               */
     public void insert (int pos, E elem);
     
-    /* Elimina el elemento que ocupa la posici髇 del par醡etro  *	 
-     * @param pos la posici髇 que ocupa el elemento a eliminar, *
+    /* Elimina el elemento que ocupa la posici贸n del par谩metro  *	 
+     * @param pos la posici贸n que ocupa el elemento a eliminar, *
      *  comenzando en 1                                         *
 	 * @Pre: 1 <= pos <= size()                                 */
     public void remove (int pos);

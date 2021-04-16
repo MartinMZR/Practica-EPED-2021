@@ -3,22 +3,22 @@ package es.uned.lsi.eped.DataStructures;
 public abstract class Collection<E> implements CollectionIF<E> {
 	protected int size;
 
-	/* Constructor por defecto de una colección */
+	/* Constructor por defecto de una colecciÃ³n */
 	public Collection () {
 		size = 0;
 	}
 	
-	/* Devuelve el número de elementos de la colección */
+	/* Devuelve el nÃºmero de elementos de la colecciÃ³n */
 	public int size() {
 		return size;
 	}
 	
-	/* Nos dice si la colección está vacía o no */
+	/* Nos dice si la colecciÃ³n estÃ¡ vacÃ­a o no */
 	public boolean isEmpty() {
 		return size == 0;
 	}
 	
-	/* Vacía la colección */
+	/* VacÃ­a la colecciÃ³n */
 	public void clear() {
 		size = 0;
 	}

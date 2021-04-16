@@ -1,10 +1,10 @@
 package es.uned.lsi.eped.DataStructures;
 
-/* Representa una secuencia, que es una colección de elementos  *
+/* Representa una secuencia, que es una colecciÃ³n de elementos  *
  * que se organizan linealmente.                                */
 public interface SequenceIF<E> extends CollectionIF<E> {
 
 	/* Devuelve el iterador sobre la secuencia. No necesita     *
-	 * parámetros puesto que el recorrido es lineal y único.    */
+	 * parÃ¡metros puesto que el recorrido es lineal y Ãºnico.    */
 	public IteratorIF<E> iterator (); 
 }

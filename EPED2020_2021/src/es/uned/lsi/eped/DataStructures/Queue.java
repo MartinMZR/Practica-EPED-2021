@@ -4,17 +4,17 @@ public class Queue<E> extends Sequence<E> implements QueueIF<E> {
 
 	private NodeSequence lastNode;
 
-	/* Constructor por defecto: crea una cola vacía */
+	/* Constructor por defecto: crea una cola vacÃ­a */
 	public Queue(){
-		super();              /* Construimos la secuencia vacía */
-		this.lastNode = null; /* No hay último nodo */
+		super();              /* Construimos la secuencia vacÃ­a */
+		this.lastNode = null; /* No hay Ãºltimo nodo */
 	}
 	
 	/* Constructor por copia: delega en el constructor por copia *
 	 * de la secuencia                                           */
     public Queue(Queue<E> s) {
 		super(s);  /* Copiamos la secuencia de la cola original */
-		/* Recorremos la secuencia de la cola copia para encontrar su último nodo */
+		/* Recorremos la secuencia de la cola copia para encontrar su Ãºltimo nodo */
 		if ( this.isEmpty() ) {
 			this.lastNode = null;
 		} else {
@@ -28,7 +28,7 @@ public class Queue<E> extends Sequence<E> implements QueueIF<E> {
 		return this.firstNode.getValue();
 	}
 
-	/* Añade un nuevo elemento al final de la cola */
+	/* AÃ±ade un nuevo elemento al final de la cola */
 	public void enqueue(E elem) {
 		NodeSequence newNode = new NodeSequence(elem);
 		if(isEmpty()){
@@ -49,10 +49,10 @@ public class Queue<E> extends Sequence<E> implements QueueIF<E> {
 		}
 	}
 	
-	/* Vacía la cola */
+	/* VacÃ­a la cola */
 	public void clear() {
 		super.clear();   /* Vaciamos la secuencia */
-		this.lastNode = null; /* No hay último nodo */
+		this.lastNode = null; /* No hay Ãºltimo nodo */
 	}
 	
 }

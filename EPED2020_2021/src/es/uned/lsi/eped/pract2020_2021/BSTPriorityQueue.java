@@ -34,25 +34,33 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
     /*Devuelve el siguiente elemento de la iteración*/
     public E getNext() {  
     	
-    	elem = iteratorQueue.getNext();
+    	elem = iteratorQueue.getNext(); 
 
-    	// Si la cola actual está vacía cogemos la próxima cola
-    	if(!iteratorQueue.hasNext()) {
-    		spQueue = iteratorBSTree.getNext();
-    		iteratorQueue = spQueue.iterator();
-    	}  	   
-    	
-    	return elem;
+		return elem;
     }
     
     /*Comprueba si queda algún elemento por iterar*/
     public boolean hasNext() { 
-    	return iteratorBSTree.hasNext();
+    	
+    	boolean hasNext = true;
+    	
+		//Si la cola actual está vacía
+		if(!iteratorQueue.hasNext()) {
+			// Si quedan colas dentro del arbol
+			if(iteratorBSTree.hasNext()) {
+				spQueue = iteratorBSTree.getNext();
+				iteratorQueue = spQueue.iterator();
+			} else {
+				hasNext = false;
+			}
+		}
+
+		return hasNext;
     }
  
     /*Reinicia el iterador a la posición inicial*/
     public void reset() { 
-    	iteratorBSTree = priorityBSQueue.iterator(IteratorModes.DIRECTORDER);
+    	iteratorBSTree.reset();
     }
   }
 
@@ -75,12 +83,14 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
    */
   public E getFirst() { 
 	  
+	  E elem = null;
+	  
 	  if(!isEmpty()) {
 		  // Creamos un iterador y devolvemos el primer elemento de la primera cola
-		  return priorityBSQueue.iterator(IteratorModes.DIRECTORDER).getNext().getFirst();
-	  } else {
-		  return null;
-	  }
+		  elem = priorityBSQueue.iterator(IteratorModes.DIRECTORDER).getNext().getFirst();
+	  } 
+	  
+	  return elem;
   }
  
   /*Añade un elemento a la cola de acuerdo a su prioridad

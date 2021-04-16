@@ -1,8 +1,8 @@
 package es.uned.lsi.eped.DataStructures;
 
 /* Representa una cola de elementos. Una cola es una            * 
- * especialización de una secuencia, que mantiene el orden de   * 
- * almacenamiento de sus elementos y una política de acceso     *
+ * especializaciÃ³n de una secuencia, que mantiene el orden de   * 
+ * almacenamiento de sus elementos y una polÃ­tica de acceso     *
  * First In First Out (FIFO)                                    */
 public interface QueueIF<E> extends SequenceIF<E> {
 
@@ -12,12 +12,12 @@ public interface QueueIF<E> extends SequenceIF<E> {
      public E getFirst ();
 
     /* Incluye un elemento al final de la cola. Modifica el     *
-     * tamaño de la misma.                                      *
-     * @param elem el elemento que debe encolar (añadir).       */
+     * tamaÃ±o de la misma.                                      *
+     * @param elem el elemento que debe encolar (aÃ±adir).       */
      public void enqueue (E elem);
     
     /* Elimina el primer elemento de la cola. Modifica la       *
-     * tamaño de la misma.                                      *
+     * tamaÃ±o de la misma.                                      *
      * @Pre !isEmpty();                                         */
      public void dequeue ();        
 }
