@@ -38,10 +38,9 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
 	  
 	  if(!isEmpty()) {
 		  
-		  return normalQueue.getFirst();	  
+		  return normalQueue.getFirst();		  
+	  } else {	
 		  
-	  } else {		  
-		  System.out.println("No se puede mostrar el primer elemento, la cola está vacía. ");
 		  return null;
 	  }
   }
@@ -59,8 +58,6 @@ public class SamePriorityQueue<E> implements QueueIF<E>,Comparable<SamePriorityQ
 	  
 	  if(!isEmpty()) {
 		  normalQueue.dequeue();
-	  } else {
-		  System.out.println("No se puede extraer el nodo, la cola está vacía.");
 	  }
   }
 

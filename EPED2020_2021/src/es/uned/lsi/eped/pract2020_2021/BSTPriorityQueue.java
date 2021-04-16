@@ -2,6 +2,7 @@
 package es.uned.lsi.eped.pract2020_2021;
 
 import es.uned.lsi.eped.DataStructures.*;
+import es.uned.lsi.eped.DataStructures.BSTreeIF.IteratorModes;
 
 /*Representa una cola con prioridad implementada mediante un árbol binario de búsqueda de SamePriorityQueue*/
 public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueIF<E> {
@@ -22,7 +23,11 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
     }
 
     /*Devuelve el siguiente elemento de la iteración*/
-    public E getNext() { ... }
+    public E getNext() {  
+    	
+  	  // *** FALTA IMPLEMENTAR ***  
+    	return null;
+    }
     
     /*Comprueba si queda algún elemento por iterar*/
     public boolean hasNext() { 
@@ -52,18 +57,29 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
    *llegó en primer lugar
    * @Pre !isEmpty()
    */
-  public E getFirst() { ... }
+  public E getFirst() { 
+
+	  // *** FALTA IMPLEMENTAR ***
+	  return null;
+  }
  
   /*Añade un elemento a la cola de acuerdo a su prioridad
    *y su orden de llegada
    */
-  public void enqueue(E elem, int prior) { ... }
+  public void enqueue(E elem, int prior) { 
+	  
+	  // *** FALTA IMPLEMENTAR ***
+  }
 
   /*Elimina el elemento más prioritario y que llegá a la cola
    *en primer lugar
    * @Pre !isEmpty()
    */
-  public void dequeue() { ... }
+  public void dequeue() { 
+	  
+	  // *** FALTA IMPLEMENTAR ***
+
+  }
 
   /* OPERACIONES PROPIAS DE LA INTERFAZ SEQUENCEIF */
 
@@ -76,19 +92,19 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
   /* OPERACIONES PROPIAS DE LA INTERFAZ COLLECTIONIF */
 
   /*Devuelve el número de elementos de la cola*/
-  public int size() { 
-	  return size;
+  public int size() { 	  	  
+	  return priorityQueue.size();
   }
 
   /*Decide si la cola está vacía*/
   public boolean isEmpty() { 
-	  return size == 0;
+	  return priorityQueue.isEmpty();
   }
  
-  /*Decide si la cola contiene el elemento dado por parï¿½metro*/
+  /*Decide si la cola contiene el elemento dado por parámetro*/
   public boolean contains(E e) { 
 
-	  IteratorIF<SamePriorityQueue<E>> it = priorityQueue.iterator();
+	  IteratorIF<SamePriorityQueue<E>> it = priorityQueue.iterator(IteratorModes.DIRECTORDER);
 	  
 	  while(it.hasNext()) {		  
 
@@ -101,8 +117,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
  
   /*Elimina todos los elementos de la cola*/
   public void clear() { 
-	  size = 0;  
-  }
- 
+	  priorityQueue.clear();  
+  } 
 }
 
