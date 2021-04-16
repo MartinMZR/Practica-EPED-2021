@@ -28,27 +28,26 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
     }
 
     /*Devuelve el siguiente elemento de la iteración*/
-    public E getNext() {  		    
-    	// Comprueba que aún quedan colas en la lista y que la cola actual está vacía
-	   	if(hasNext() && !iteratorQueue.hasNext()) { 	    																						
-	   		iteratorList.remove(firstElement);
-	   		// Comprueba que una vez eliminada la cola actual aún quedan una cola por recorrer
-	   		if(hasNext()) {
-	   			spQueue = iteratorList.get(firstElement);
-	   			iteratorQueue = spQueue.iterator();
-	   		}
-    	}    	
-	   	// Comprueba que aún quedan elementos en la cola actual
-	   	if(iteratorQueue.hasNext()) {	    		
-	   		elem = iteratorQueue.getNext();	
-	   	}	
+    public E getNext() {  		
+	   	    	
+	   	elem = iteratorQueue.getNext(); 
+	   
+	   	// Comprobamos si cola actual está vacía y aún quedan colas por recorrer
+	   	if(!iteratorQueue.hasNext() && hasNext()) {	
+	   		iteratorList.remove(firstElement); 
+	   		// Comprobamos que una vez eliminada la cola actual aún queda una cola por recorrer
+		   	if(hasNext()) {
+			   	spQueue = iteratorList.get(firstElement);
+			   	iteratorQueue = spQueue.iterator();
+			 }
+	   	}  	
 	   	
 	   	return elem;
     }
     
     /*Comprueba si queda algún elemento por iterar*/
     public boolean hasNext() { 
-    	return iteratorList.size() != 1;
+    	return iteratorList.size() != 0;
     }
  
     /*Reinicia el iterador a la posición inicial*/
