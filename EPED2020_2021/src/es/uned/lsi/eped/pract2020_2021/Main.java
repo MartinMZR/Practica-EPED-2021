@@ -31,8 +31,8 @@ public class Main {
 	}
 	
 	/*Comprueba si la ruta de un fichero existe (devuelve cadena de 
-	 * caracteres vac韆) o en caso de que no (cadena de caracteres
-	 * no vac韆)
+	 * caracteres vac铆a) o en caso de que no (cadena de caracteres
+	 * no vac铆a)
 	 * @param path: ruta de un fichero
 	 * */
 	public static String existsFolder(String path){
@@ -52,7 +52,7 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		//Tipo de cola con prioridad. Posibles valores: 
 		//   - BQ (Bucket Queue) o 
-		//   - BST (Cola con prioridad mediante 醨bol de b鷖queda binario)
+		//   - BST (Cola con prioridad mediante 谩rbol de b煤squeda binario)
 		String typeQueue = args[0]; 
 		PriorityQueueIF<String> PQ;
 		if(typeQueue.equals("BQ")){
@@ -69,7 +69,7 @@ public class Main {
 		}
 		//Fichero de entrada
 		String input = args[1]; 
-		//se comprueba que existe la ruta mediante la funci髇 auxiliar existsFolder
+		//se comprueba que existe la ruta mediante la funci贸n auxiliar existsFolder
 		String existsPath = existsFolder(input);
 		if(!existsPath.isEmpty()){
 			//si no existe, se lanza mensaje de error
@@ -78,7 +78,7 @@ public class Main {
 		}
 		//Fichero de salida
 		String output = args[2];
-		//se comprueba que existe la ruta mediante la funci髇 auxiliar existsFolder
+		//se comprueba que existe la ruta mediante la funci贸n auxiliar existsFolder
 		String existsOut = existsFolder(output);
 		if(!existsOut.isEmpty()){
 			//si no existe, se lanza mensaje de error
@@ -94,56 +94,56 @@ public class Main {
 		String line;
 		long t0 = System.currentTimeMillis();
 		while ((line = br.readLine())!=null) {
-			/*cada l韓ea del fichero de entrada es una operaci髇
+			/*cada l铆nea del fichero de entrada es una operaci贸n
 			 * de la cola con prioridad.
 			*/
-			//Obtiene cadenas separadas por espacios en blancos de la l韓ea
+			//Obtiene cadenas separadas por espacios en blancos de la l铆nea
 			StringTokenizer st = new StringTokenizer(line, " ");
-			//La primera cadena consiste en la operaci髇
+			//La primera cadena consiste en la operaci贸n
 			String op = st.nextToken();
-			//resultado de la operaci髇
+			//resultado de la operaci贸n
 			String result = new String();
-			//distinci髇 seg鷑 sea la operaci髇
+			//distinci贸n seg煤n sea la operaci贸n
 			switch(op){
-				//operaci髇 enqueue
+				//operaci贸n enqueue
 				case "enqueue":
-					/*va acompa馻da de 2 par醡etros
+					/*va acompa帽ada de 2 par谩metros
 					el primero es el elemento */
 					String elem = st.nextToken();
-					/*el segundo es una prioridad (n鷐ero entero)
+					/*el segundo es una prioridad (n煤mero entero)
 					 *la cadena se pasa a entero
 					*/
 					int prior = Integer.parseInt(st.nextToken());
-					//se aplica la operaci髇 enqueue sobre la cola con prioridad
+					//se aplica la operaci贸n enqueue sobre la cola con prioridad
 					PQ.enqueue(elem, prior);
 					break;
 				//}
-				//operaci髇 dequeue
+				//operaci贸n dequeue
 				case "dequeue":
-					//se aplica la operaci髇 dequeue sobre la cola con prioridad
+					//se aplica la operaci贸n dequeue sobre la cola con prioridad
 					PQ.dequeue();
 					break;
 				//operacion size
 				case "size":
-					//se aplica la operaci髇 size sobre la cola con prioridad
+					//se aplica la operaci贸n size sobre la cola con prioridad
 					result = Integer.toString(PQ.size());
 					break;
-				//operaci髇 iterator
+				//operaci贸n iterator
 				case "iterator":
 					/*se obtiene la secuencia de elementos de la cola con 
-					 * prioridad mediante la funci髇 auxiliar toString
+					 * prioridad mediante la funci贸n auxiliar toString
 					*/
 					result = toString(PQ);
 					break;
 				
 			}
-			//solo se escriben cadenas no vac韆s en el fichero de salida 
+			//solo se escriben cadenas no vac铆as en el fichero de salida 
 			if(!result.isEmpty()){
 				bw.write(result+lineFeed);
 			}
 		} 
 		long t1 = System.currentTimeMillis() - t0;
-		//muestra por consola el tiempo de ejecuci髇 en milisegundos
+		//muestra por consola el tiempo de ejecuci贸n en milisegundos
 		System.out.println(t1+" ms");
 		//se cierra el buffer de lectura
 		br.close();
