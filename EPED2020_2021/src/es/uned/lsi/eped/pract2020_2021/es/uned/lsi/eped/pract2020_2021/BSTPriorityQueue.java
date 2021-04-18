@@ -28,7 +28,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
     	iteratorBSTree = priorityBSQueue.iterator(IteratorModes.DIRECTORDER);
     	spQueue = iteratorBSTree.getNext();
     	iteratorQueue = spQueue.iterator();
-    	elem = null;    	
+    	elem = null; 
     }
 
     /*Devuelve el siguiente elemento de la iteración*/
@@ -125,7 +125,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
    * @Pre !isEmpty()
    */
   public void dequeue() { 
-	  
+ 
 	  IteratorIF<SamePriorityQueue<E>> it = priorityBSQueue.iterator(IteratorModes.DIRECTORDER);
 	  
 	  if(!isEmpty()) {
