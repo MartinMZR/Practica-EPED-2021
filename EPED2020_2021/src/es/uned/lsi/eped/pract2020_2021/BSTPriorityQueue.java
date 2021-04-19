@@ -4,17 +4,17 @@ import es.uned.lsi.eped.DataStructures.*;
 import es.uned.lsi.eped.DataStructures.BSTreeIF.IteratorModes;
 import es.uned.lsi.eped.DataStructures.BSTreeIF.Order;
 
-/*Representa una cola con prioridad implementada mediante un árbol binario de búsqueda de SamePriorityQueue*/
+/*Representa una cola con prioridad implementada mediante un Ã¡rbol binario de bÃºsqueda de SamePriorityQueue*/
 public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueIF<E> {
  
-  //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
+  //LA DEFINICIÃ“N DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
 	private BSTree<SamePriorityQueue<E>> priorityBSQueue;
 
   /* Clase privada que implementa un iterador para la *
    * cola con prioridad basada en secuencia.          */
   public class PriorityQueueIterator implements IteratorIF<E> {
 
-    //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
+    //LA DEFINICIÃ“N DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
 	  private IteratorIF<SamePriorityQueue<E>> iteratorBSTree;
 	  private SamePriorityQueue<E> spQueue;
 	  private IteratorIF<E> iteratorQueue;
@@ -22,15 +22,15 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 	  
     /*Constructor por defecto*/
     protected PriorityQueueIterator(){ 
-    	// Utilizamos el iterador en DIRECORDER por que el arbol está creado en orden DESCENDENTE
-    	// de esta forma cuando pedimos un nuevo elemento siempre nos da el MAYOR que es el de más prioridad
+    	// Utilizamos el iterador en DIRECORDER por que el arbol estÃ¡ creado en orden DESCENDENTE
+    	// de esta forma cuando pedimos un nuevo elemento siempre nos da el MAYOR que es el de mÃ¡s prioridad
     	iteratorBSTree = priorityBSQueue.iterator(IteratorModes.DIRECTORDER);
     	spQueue = iteratorBSTree.getNext();
     	iteratorQueue = spQueue.iterator();
     	elem = null; 
     }
 
-    /*Devuelve el siguiente elemento de la iteración*/
+    /*Devuelve el siguiente elemento de la iteraciÃ³n*/
     public E getNext() {  
     	
     	elem = iteratorQueue.getNext(); 
@@ -38,14 +38,14 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 		return elem;
     }
     
-    /*Comprueba si queda algún elemento por iterar*/
+    /*Comprueba si queda algÃºn elemento por iterar*/
     public boolean hasNext() { 
     	
     	boolean hasNext = true;
     	
-		//Si la cola actual está vacía
+		//Si la cola actual estÃ¡ vacÃ­a
 		if(!iteratorQueue.hasNext()) {
-			// Si quedan colas dentro del arbol
+			// Si quedan colas dentro del Ã¡rbol
 			if(iteratorBSTree.hasNext()) {
 				spQueue = iteratorBSTree.getNext();
 				iteratorQueue = spQueue.iterator();
@@ -57,7 +57,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 		return hasNext;
     }
  
-    /*Reinicia el iterador a la posición inicial*/
+    /*Reinicia el iterador a la posiciÃ³n inicial*/
     public void reset() { 
     	iteratorBSTree.reset();
     }
@@ -67,17 +67,17 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 
   /* OPERACIONES PROPIAS DE ESTA CLASE */
 
-  /*constructor por defecto: crea cola con prioridad vacía
+  /*constructor por defecto: crea cola con prioridad vacÃ­a
    */
   BSTPriorityQueue(){ 
-	  // Creamos el arbol binario de búsqueda en orden DESCENDENTE
+	  // Creamos el arbol binario de bï¿½squeda en orden DESCENDENTE
 	  priorityBSQueue = new BSTree<SamePriorityQueue<E>>(Order.DESCENDING);
   }
 
   /* OPERACIONES PROPIAS DE LA INTERFAZ PRIORITYQUEUEIF */
 
-  /*Devuelve el elemento más prioritario de la cola y que
-   *llegó en primer lugar
+  /*Devuelve el elemento mÃ¡s prioritario de la cola y que
+   *llegÃ³ en primer lugar
    * @Pre !isEmpty()
    */
   public E getFirst() { 
@@ -92,7 +92,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 	  return elem;
   }
  
-  /*Añade un elemento a la cola de acuerdo a su prioridad
+  /*AÃ±ade un elemento a la cola de acuerdo a su prioridad
    *y su orden de llegada
    */
   public void enqueue(E elem, int prior) { 
@@ -119,7 +119,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 	  }
   }
 
-  /*Elimina el elemento más prioritario y que llegá a la cola
+  /*Elimina el elemento mï¿½s prioritario y que llegÃ³ a la cola
    *en primer lugar
    * @Pre !isEmpty()
    */
@@ -130,7 +130,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 	  if(!isEmpty()) {
 		  SamePriorityQueue<E> spq = it.getNext();
 		  spq.dequeue();
-		  // Comprobamos si la cola ha quedado vacía para eliminarla
+		  // Comprobamos si la cola ha quedado vacÃ­a para eliminarla
 		  if(spq.isEmpty()) {
 			  priorityBSQueue.remove(spq);
 		  }		  
@@ -146,7 +146,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
  
   /* OPERACIONES PROPIAS DE LA INTERFAZ COLLECTIONIF */
 
-  /*Devuelve el número de elementos de la cola*/
+  /*Devuelve el nÃºmero de elementos de la cola*/
   public int size() { 	  	  
 	  
 	  int sizeQueue = 0;
@@ -159,12 +159,12 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
 	  return sizeQueue;
   }
 
-  /*Decide si la cola está vacía*/
+  /*Decide si la cola estÃ¡ vacÃ­a*/
   public boolean isEmpty() { 
 	  return priorityBSQueue.isEmpty();
   }
  
-  /*Decide si la cola contiene el elemento dado por parámetro*/
+  /*Decide si la cola contiene el elemento dado por parÃ¡metro*/
   public boolean contains(E e) { 
 
 	  IteratorIF<SamePriorityQueue<E>> it = priorityBSQueue.iterator(IteratorModes.DIRECTORDER);
@@ -180,6 +180,7 @@ public class BSTPriorityQueue<E> extends Collection<E> implements PriorityQueueI
  
   /*Elimina todos los elementos de la cola*/
   public void clear() { 
-	  priorityBSQueue.clear();  
+	  priorityBSQueue = new BSTree<SamePriorityQueue<E>>(Order.DESCENDING);
+	  //priorityBSQueue.clear();	  
   } 
 }

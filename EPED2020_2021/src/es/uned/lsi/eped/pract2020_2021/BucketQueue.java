@@ -5,14 +5,14 @@ import es.uned.lsi.eped.DataStructures.*;
 /*Representa una cola con prioridad implementada mediante una secuencia de SamePriorityQueue*/
 public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> {
  
-  //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
+  //LA DEFINICIÃ“N DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE
 	private List<SamePriorityQueue<E>> priorityQueue;
 	
   /* Clase privada que implementa un iterador para la *
    * cola con prioridad basada en secuencia.          */
   public class PriorityQueueIterator implements IteratorIF<E> {
 
-    //LA DEFINICIÓN DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE	
+    //LA DEFINICIÃ“N DE LOS ATRIBUTOS DE LA CLASE ES TAREA DE CADA ESTUDIANTE	
 	  private IteratorIF<SamePriorityQueue<E>> iteratorList;
 	  private SamePriorityQueue<E> spQueue;
 	  private IteratorIF<E> iteratorQueue;
@@ -26,7 +26,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
     	elem = null;
     }
 
-    /*Devuelve el siguiente elemento de la iteración*/
+    /*Devuelve el siguiente elemento de la iteraciÃ³n*/
     public E getNext() {  		
 	   	    	
 	   	elem = iteratorQueue.getNext(); 
@@ -34,12 +34,12 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 	   	return elem;
     }
     
-    /*Comprueba si queda algún elemento por iterar*/
+    /*Comprueba si queda algÃºn elemento por iterar*/
     public boolean hasNext() { 
     	
     	boolean hasNext = true;
     	
-    	// Si cola actual está vacía
+    	// Si cola actual estï¿½ vacï¿½a
 	   	if(!iteratorQueue.hasNext()) {   		
 	   		// Si quedan colas dentro de la lista
 		   	if(iteratorList.hasNext()) {
@@ -53,7 +53,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
     	return hasNext;
     }
  
-    /*Reinicia el iterador a la posición inicial*/
+    /*Reinicia el iterador a la posiciÃ³n inicial*/
     public void reset() { 
     	iteratorList.reset();    	
     }
@@ -63,7 +63,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 
   /* OPERACIONES PROPIAS DE ESTA CLASE */
 
-  /*constructor por defecto: crea cola con prioridad vacía
+  /*constructor por defecto: crea cola con prioridad vacÃ­a
    */
   BucketQueue() { 
 	  priorityQueue = new List<SamePriorityQueue<E>>();
@@ -71,8 +71,8 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 
   /* OPERACIONES PROPIAS DE LA INTERFAZ PRIORITYQUEUEIF */
 
-  /*Devuelve el elemento más prioritario de la cola y que
-   *llegó en primer lugar
+  /*Devuelve el elemento mÃ¡s prioritario de la cola y que
+   *llegÃ³ en primer lugar
    * @Pre !isEmpty()
    */
   public E getFirst() { 
@@ -87,7 +87,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 	  return elem;
   }
  
-  /*Añade un elemento a la cola de acuerdo a su prioridad
+  /*AÃ±ade un elemento a la cola de acuerdo a su prioridad
    *y su orden de llegada
    */
   public void enqueue(E elem, int prior) { 
@@ -128,7 +128,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 	  }	  		
   }
 
-  /*Elimina el elemento más prioritario y que llegá a la cola
+  /*Elimina el elemento mï¿½s prioritario y que llegÃ³ a la cola
    *en primer lugar
    * @Pre !isEmpty()
    */
@@ -139,9 +139,9 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 	  if(!isEmpty()) {
 		  SamePriorityQueue<E> spq = it.getNext();
 		  spq.dequeue();
-		  // Comprobamos si la cola se ha quedado vacía para eliminarla
+		  // Comprobamos si la cola se ha quedado vacï¿½a para eliminarla
 		  if(spq.isEmpty()) {
-			  priorityQueue.remove(1);		// Eliminamos la primera cola por que es la única que estará vacía
+			  priorityQueue.remove(1);		// Eliminamos la primera cola por que es la Ãºnica que estarÃ¡ vacÃ­a
 		  }
 	  }	   
   }
@@ -155,7 +155,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
  
   /* OPERACIONES PROPIAS DE LA INTERFAZ COLLECTIONIF */
 
-  /*Devuelve el número de elementos de la cola*/
+  /*Devuelve el nÃºmero de elementos de la cola*/
   public int size() {   
 	  
 	  int sizeQueue = 0;
@@ -168,12 +168,12 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
 	  return sizeQueue;
   }
 
-  /*Decide si la cola está vacía*/
-  public boolean isEmpty() {   
+  /*Decide si la cola estÃ¡ vacÃ­a*/
+  public boolean isEmpty() { 
 	  return priorityQueue.isEmpty();
   }
  
-  /*Decide si la cola contiene el elemento dado por parámetro*/
+  /*Decide si la cola contiene el elemento dado por parÃ¡metro*/
   public boolean contains(E e) {
 
 	  IteratorIF<SamePriorityQueue<E>> it = priorityQueue.iterator();
@@ -188,7 +188,7 @@ public class BucketQueue<E> extends Collection<E> implements PriorityQueueIF<E> 
   }
  
   /*Elimina todos los elementos de la cola*/
-  public void clear() { 	  
+  public void clear() { 
 	  priorityQueue.clear();
   }
  
